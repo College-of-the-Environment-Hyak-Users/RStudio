@@ -9,10 +9,9 @@ Pro at RStudio but would benefit from more resources? It is easier than ever to 
 
 1. Go to https://ondemand.hyak.uw.edu/pun/sys/dashboard/
 
-![dashboard](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-05.png
 
 <img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-05.png" width="300"/>
 
 Click on Interactive Apps
 
-![ia](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-40.png)
+<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-40.png" width="300"/>

@@ -57,3 +57,9 @@ Last login: Thu May  1 10:23:40 2025 from 10.64.64.9
 ╰─────────────────┴──────────────┴──────────────╯
    Checkpoint is currently limited to 910 jobs
 ```
+
+Based on the above information one might select 
+
+<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-25-22.png" width="300"/>
+
+One real value here is that customized Apptainer files can you used 

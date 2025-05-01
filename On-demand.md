@@ -25,7 +25,8 @@ You will be then be asked for information on resources you will ask for.
 
 If you this is the first experience with Klone you it might be good to get familar with what resources are available to you.
 
-For this you can login to Klone at command line from this webpage
+For this you can login to Klone at command line from this webpage by clicking on `>_Klone Login` and entering your credentials.
+From there you can run command `hyakalloc` to see what resources you have access to. 
 
 <img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png" width="600"/>
 

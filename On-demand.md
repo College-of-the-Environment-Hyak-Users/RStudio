@@ -27,7 +27,7 @@ If you this is the first experience with Klone you it might be good to get famil
 
 For this you can login to Klone at command line from this webpage
 
-<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png" width="300"/>
+<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png" width="600"/>
 
 ```
 Last login: Thu May  1 10:23:40 2025 from 10.64.64.9

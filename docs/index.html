@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Running RStudio on Hyak using On-Demand feature – RStudio on Hyak</title>
+<title>Running RStudio on Hyak using On-Demand Feature – RStudio on Hyak</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,35 +103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -186,14 +157,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#access-dashboard" id="toc-access-dashboard" class="nav-link active" data-scroll-target="#access-dashboard"><span class="header-section-number">1</span> Access Dashboard</a></li>
-  <li><a href="#selecting-resources" id="toc-selecting-resources" class="nav-link" data-scroll-target="#selecting-resources"><span class="header-section-number">2</span> Selecting Resources</a>
-  <ul class="collapse">
-  <li><a href="#custom-container" id="toc-custom-container" class="nav-link" data-scroll-target="#custom-container"><span class="header-section-number">2.1</span> Custom Container</a></li>
-  <li><a href="#leveraging-ckpt-as-resource" id="toc-leveraging-ckpt-as-resource" class="nav-link" data-scroll-target="#leveraging-ckpt-as-resource"><span class="header-section-number">2.2</span> Leveraging ckpt as resource</a></li>
-  <li><a href="#compute-parameters" id="toc-compute-parameters" class="nav-link" data-scroll-target="#compute-parameters"><span class="header-section-number">2.3</span> Compute Parameters</a></li>
-  </ul></li>
-  <li><a href="#launch-and-connect" id="toc-launch-and-connect" class="nav-link" data-scroll-target="#launch-and-connect"><span class="header-section-number">3</span> Launch and Connect</a></li>
+  <li><a href="#accessing-the-dashboard" id="toc-accessing-the-dashboard" class="nav-link active" data-scroll-target="#accessing-the-dashboard"><span class="header-section-number">1</span> 1. Accessing the Dashboard</a></li>
+  <li><a href="#selecting-resources" id="toc-selecting-resources" class="nav-link" data-scroll-target="#selecting-resources"><span class="header-section-number">2</span> 2. Selecting Resources</a></li>
+  <li><a href="#using-a-custom-container" id="toc-using-a-custom-container" class="nav-link" data-scroll-target="#using-a-custom-container"><span class="header-section-number">3</span> 3. Using a Custom Container</a></li>
+  <li><a href="#leveraging-the-ckpt-partition" id="toc-leveraging-the-ckpt-partition" class="nav-link" data-scroll-target="#leveraging-the-ckpt-partition"><span class="header-section-number">4</span> 4. Leveraging the <code>ckpt</code> Partition</a></li>
+  <li><a href="#setting-compute-parameters" id="toc-setting-compute-parameters" class="nav-link" data-scroll-target="#setting-compute-parameters"><span class="header-section-number">5</span> 5. Setting Compute Parameters</a></li>
+  <li><a href="#launch-and-connect" id="toc-launch-and-connect" class="nav-link" data-scroll-target="#launch-and-connect"><span class="header-section-number">6</span> 6. Launch and Connect</a></li>
   </ul>
 </nav>
 </nav>
@@ -206,7 +175,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Running RStudio on Hyak using On-Demand feature</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Running RStudio on Hyak using On-Demand Feature</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -223,7 +192,6 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Pro at RStudio but would benefit from more resources? It is easier than ever to launch a RStudio Instance on Hyak.</strong></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -234,72 +202,80 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>see also: <a href="https://hyak.uw.edu/docs/ood/start" class="uri">https://hyak.uw.edu/docs/ood/start</a></p>
+<p>If you’re experienced with RStudio but new to Hyak, launching an instance via the OnDemand portal is easier than ever.</p>
+<p>See also: <a href="https://hyak.uw.edu/docs/ood/start">Hyak OnDemand Docs</a></p>
 </div>
 </div>
 <hr>
-<section id="access-dashboard" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Access Dashboard</h1>
-<p>Go to <a href="https://ondemand.hyak.uw.edu/pun/sys/dashboard/" class="uri">https://ondemand.hyak.uw.edu/pun/sys/dashboard/</a></p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-05.png" width="300"></p>
-<p>Click on Interactive Apps</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-40.png" width="300"></p>
+<section id="accessing-the-dashboard" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="accessing-the-dashboard"><span class="header-section-number">1</span> 1. Accessing the Dashboard</h2>
+<p>Go to the OnDemand Dashboard:<br>
+<a href="https://ondemand.hyak.uw.edu/pun/sys/dashboard/" class="uri">https://ondemand.hyak.uw.edu/pun/sys/dashboard/</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-05.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>OnDemand Dashboard</figcaption>
+</figure>
+</div>
+<p>Click on <strong>Interactive Apps</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-40.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Interactive Apps</figcaption>
+</figure>
+</div>
+<hr>
 </section>
-<section id="selecting-resources" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Selecting Resources</h1>
-<p>Decide on what specific resources are available and needed.</p>
-<p>You will be then be asked for information on resources you will ask for.</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-04-18.png" width="300"></p>
-<p>If you this is the first experience with Klone you it might be good to get familar with what resources are available to you.</p>
-<p>For this you can login to Klone at command line from this webpage by clicking on <code>&gt;_Klone Login</code> and entering your credentials. From there you can run command <code>hyakalloc</code> to see what resources you have access to.</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png" width="100%"></p>
+<section id="selecting-resources" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="selecting-resources"><span class="header-section-number">2</span> 2. Selecting Resources</h2>
+<p>After selecting RStudio, you’ll be prompted to specify the computing resources needed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-04-18.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Resource Selection</figcaption>
+</figure>
+</div>
+<p>If you’re unfamiliar with the Klone cluster, it’s helpful to explore your resource allocations:</p>
+<ol type="1">
+<li>Click on <code>&gt;_ Klone Login</code> from the dashboard.</li>
+<li>Enter your UW credentials.</li>
+<li>Run the <code>hyakalloc</code> command:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hyakalloc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will display your available and used CPU/memory allocations.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>hyakalloc output</figcaption>
+</figure>
+</div>
+<p>Based on your allocations, select an appropriate partition and number of cores:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-25-22.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Example resource request</figcaption>
+</figure>
+</div>
 <hr>
-<pre><code>Last login: Thu May  1 10:23:40 2025 from 10.64.64.9
-(base) [sr320@klone-login03 ~]$ hyakalloc
-       Account resources available to user: sr320        
-╭─────────┬──────────────┬──────┬────────┬──────┬───────╮
-│ Account │    Partition │ CPUs │ Memory │ GPUs │       │
-├─────────┼──────────────┼──────┼────────┼──────┼───────┤
-│   coenv │      compute │   40 │   175G │    0 │ TOTAL │
-│         │              │   25 │   138G │    0 │ USED  │
-│         │              │   15 │    37G │    0 │ FREE  │
-├─────────┼──────────────┼──────┼────────┼──────┼───────┤
-│   coenv │       cpu-g2 │  736 │  5714G │    0 │ TOTAL │
-│         │              │  592 │  3220G │    0 │ USED  │
-│         │              │  144 │  2494G │    0 │ FREE  │
-├─────────┼──────────────┼──────┼────────┼──────┼───────┤
-│   srlab │ cpu-g2-mem2x │   32 │   490G │    0 │ TOTAL │
-│         │              │    4 │    45G │    0 │ USED  │
-│         │              │   28 │   445G │    0 │ FREE  │
-╰─────────┴──────────────┴──────┴────────┴──────┴───────╯
-              Checkpoint Resources               
-╭─────────────────┬──────────────┬──────────────╮
-│                 │         CPUs │         GPUs │
-├─────────────────┼──────────────┼──────────────┤
-│           Idle: │         4496 │          255 │
-╰─────────────────┴──────────────┴──────────────╯
-   Checkpoint is currently limited to 910 jobs</code></pre>
-<p>Based on the above information one might select</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-25-22.png" width="300"></p>
-<section id="custom-container" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="custom-container"><span class="header-section-number">2.1</span> Custom Container</h2>
-<p>One real value here is that customized Container files can you used.</p>
-<p>See repo directory for list of files.</p>
-<p>If you want to get started fast and are genomic inclined, feel free to use</p>
-<p><code>/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif</code></p>
-<p>Which loads</p>
+</section>
+<section id="using-a-custom-container" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="using-a-custom-container"><span class="header-section-number">3</span> 3. Using a Custom Container</h2>
+<p>A key benefit of OnDemand is the ability to launch <strong>custom container environments</strong>.</p>
+<p>If you’re working with genomics or bioinformatics, consider using:</p>
+<pre class="text"><code>/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif</code></pre>
+<p>This container includes:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 21%">
+<col style="width: 11%">
+<col style="width: 23%">
+<col style="width: 43%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Program Name</th>
+<th>Program</th>
 <th>Version</th>
-<th>Installation Method</th>
+<th>Install Method</th>
 <th>Notes</th>
 </tr>
 </thead>
@@ -307,118 +283,149 @@ Note
 <tr class="odd">
 <td>Apptainer</td>
 <td>1.4.0</td>
-<td>.deb package (dpkg)</td>
+<td><code>.deb</code> package</td>
 <td>Required for Nextflow/nf-core support</td>
 </tr>
 <tr class="even">
-<td>bedtools</td>
-<td>v2.31.0</td>
-<td>Binary download</td>
-<td>Installed as&nbsp;bedtools.static</td>
-</tr>
-<tr class="odd">
 <td>Bismark</td>
 <td>0.24.2</td>
-<td>Source (zip)</td>
+<td>Source</td>
 <td>Requires Bowtie2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Bowtie2</td>
 <td>2.5.4</td>
-<td>Binary (zip)</td>
-<td>-sra-linux-x86_64&nbsp;version</td>
-</tr>
-<tr class="odd">
-<td>DIAMOND</td>
-<td>2.1.9</td>
-<td>Binary (tar.gz)</td>
-<td>diamond-linux64</td>
+<td>Binary</td>
+<td></td>
 </tr>
 <tr class="even">
-<td>fastp</td>
-<td>0.23.4</td>
-<td>Binary download</td>
-<td>Direct binary download from opengene.org</td>
+<td>DIAMOND</td>
+<td>2.1.9</td>
+<td>Binary</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>FastQC</td>
 <td>0.12.1</td>
-<td>Binary (zip)</td>
-<td>Renamed to&nbsp;fastqc-<span class="math inline">\({version}
-gffcompare | 0.12.6 | Binary (tar.gz) | From StringTie site
-HISAT2 | 2.2.1 | Source (make) | Compiled from source
-kallisto | 0.51.1 | Source (cmake, make) | Compiled in a&nbsp;build&nbsp;directory
-Miniforge (mamba) | 24.7.1-0 | Installer script (bash) | Used for Python + conda/mamba-based installs
-MultiQC | 1.24.1 | Installed via mamba | In&nbsp;multiqc_env&nbsp;conda environment
-Nextflow | Latest | Script (curl) | Installed via official bootstrap method
-NCBI Datasets CLI | 13.34.0 | Binary (zip) | Extracted to&nbsp;ncbi-datasets-v\)</span>{version}&nbsp;directory</td>
+<td>Binary</td>
+<td>Renamed <code>fastqc-${version}</code></td>
 </tr>
 <tr class="even">
-<td>NCBI BLAST+</td>
-<td>2.16.0</td>
-<td>Binary (tar.gz)</td>
-<td>Downloaded from NCBI FTP</td>
+<td>HISAT2</td>
+<td>2.2.1</td>
+<td>Source</td>
+<td>Compiled with <code>make</code></td>
 </tr>
 <tr class="odd">
-<td>RepeatMasker</td>
-<td>4.1.7-p1</td>
-<td>Source (tar.gz)</td>
-<td>Requires local DB (famdb); symlinks set to Klone’s installation</td>
+<td>MultiQC</td>
+<td>1.24.1</td>
+<td><code>mamba</code></td>
+<td>In <code>multiqc_env</code></td>
 </tr>
 <tr class="even">
-<td>RMBLAST</td>
-<td>2.14.1</td>
-<td>Binary (tar.gz)</td>
-<td>From RepeatMasker.org</td>
+<td>Nextflow</td>
+<td>Latest</td>
+<td>Script (<code>curl</code>)</td>
+<td>Bootstrap install</td>
+</tr>
+<tr class="odd">
+<td>NCBI BLAST+</td>
+<td>2.16.0</td>
+<td>Binary</td>
+<td>From NCBI FTP</td>
+</tr>
+<tr class="even">
+<td>RepeatMasker</td>
+<td>4.1.7-p1</td>
+<td>Source</td>
+<td>Requires local famdb setup</td>
 </tr>
 <tr class="odd">
 <td>salmon</td>
 <td>1.10.0</td>
-<td>Binary (tar.gz)</td>
-<td>Installed from GitHub release</td>
+<td>Binary</td>
+<td>From GitHub release</td>
 </tr>
 <tr class="even">
 <td>samtools</td>
 <td>1.20</td>
-<td>Source (configure, make)</td>
+<td>Source</td>
 <td>Compiled locally</td>
 </tr>
 <tr class="odd">
 <td>StringTie</td>
 <td>2.2.1</td>
-<td>Binary (tar.gz)</td>
-<td>Downloaded from StringTie website</td>
+<td>Binary</td>
+<td>From StringTie website</td>
 </tr>
 <tr class="even">
 <td>Trimmomatic</td>
 <td>0.39</td>
-<td>Binary (zip)</td>
-<td>Java-based, unzipped and made executable</td>
-</tr>
-<tr class="odd">
-<td>TRF (Tandem Repeats Finder)</td>
-<td>4.09.1</td>
-<td>Binary (github)</td>
-<td>Named&nbsp;trf409.linux64, marked executable</td>
+<td>Binary (Java-based)</td>
+<td>Made executable</td>
 </tr>
 </tbody>
 </table>
+<hr>
 </section>
-<section id="leveraging-ckpt-as-resource" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="leveraging-ckpt-as-resource"><span class="header-section-number">2.2</span> Leveraging ckpt as resource</h2>
-<p>If you only need instance running &lt; 5 hours one might say best practices would be to use <code>ckpt</code>. <code>ckpt</code> are unused resources by larger UW community thus not using your own group shared resources. However you will get kicked off at around 5 hours.</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-29-53.png" width="300"></p>
+<section id="leveraging-the-ckpt-partition" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="leveraging-the-ckpt-partition"><span class="header-section-number">4</span> 4. Leveraging the <code>ckpt</code> Partition</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If your job will run for <strong>less than 5 hours</strong>, use the <code>ckpt</code> partition. These are unused shared UW-wide resources and won’t count against your group allocation. However, jobs <strong>may be preempted</strong> after 5 hours.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-29-53.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>ckpt option</figcaption>
+</figure>
+</div>
+<hr>
 </section>
-<section id="compute-parameters" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="compute-parameters"><span class="header-section-number">2.3</span> Compute Parameters</h2>
-<p>You then need to select tasks, cpus, and memory</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-32-44.png" width="300"></p>
+<section id="setting-compute-parameters" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="setting-compute-parameters"><span class="header-section-number">5</span> 5. Setting Compute Parameters</h2>
+<p>Specify the number of tasks, CPUs, and memory your session will need:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-32-44.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Compute selection</figcaption>
+</figure>
+</div>
+<hr>
 </section>
-</section>
-<section id="launch-and-connect" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Launch and Connect</h1>
-<p>The instance in Launched and then you click on “Connect to RStudio Server”.</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_My_Interactive_Sessions_-_Hyak_OnDemand_2025-05-01_15-35-03.png" width="500"></p>
+<section id="launch-and-connect" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="launch-and-connect"><span class="header-section-number">6</span> 6. Launch and Connect</h2>
+<p>Once launched, you’ll be taken to the <strong>My Interactive Sessions</strong> page.</p>
+<p>Click <strong>“Connect to RStudio Server”</strong> to begin using RStudio on Hyak.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_My_Interactive_Sessions_-_Hyak_OnDemand_2025-05-01_15-35-03.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Connect to RStudio</figcaption>
+</figure>
+</div>
+<hr>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>RStudio in Hyak’s OnDemand portal offers a reproducible, containerized environment with access to powerful UW computing infrastructure — ideal for data-intensive research and teaching workflows.</p>
+</div>
+</div>
 
 
 <!-- -->
@@ -901,142 +908,134 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Running RStudio on Hyak using On-Demand feature"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: left</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    smooth-scroll: true</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    link-external-icon: true</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">    link-external-newwindow: true</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>**Pro at RStudio but would benefit from more resources? It is easier than ever to launch a RStudio Instance on Hyak.**</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>see also: <span class="ot">&lt;https://hyak.uw.edu/docs/ood/start&gt;</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># Access Dashboard</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>Go to <span class="ot">&lt;https://ondemand.hyak.uw.edu/pun/sys/dashboard/&gt;</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>&lt;img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-05.png" width="300"/&gt;</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>Click on Interactive Apps</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>&lt;img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-40.png" width="300"/&gt;</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># Selecting Resources</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>Decide on what specific resources are available and needed.</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>You will be then be asked for information on resources you will ask for.</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>&lt;img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-04-18.png" width="300"/&gt;</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>If you this is the first experience with Klone you it might be good to get familar with what resources are available to you.</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>For this you can login to Klone at command line from this webpage by clicking on <span class="in">`&gt;_Klone Login`</span> and entering your credentials. From there you can run command <span class="in">`hyakalloc`</span> to see what resources you have access to.</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>&lt;img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png" width="100%"/&gt;</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in">Last login: Thu May  1 10:23:40 2025 from 10.64.64.9</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">(base) [sr320@klone-login03 ~]$ hyakalloc</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="in">       Account resources available to user: sr320        </span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in">╭─────────┬──────────────┬──────┬────────┬──────┬───────╮</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">│ Account │    Partition │ CPUs │ Memory │ GPUs │       │</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">├─────────┼──────────────┼──────┼────────┼──────┼───────┤</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">│   coenv │      compute │   40 │   175G │    0 │ TOTAL │</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">│         │              │   25 │   138G │    0 │ USED  │</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="in">│         │              │   15 │    37G │    0 │ FREE  │</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="in">├─────────┼──────────────┼──────┼────────┼──────┼───────┤</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="in">│   coenv │       cpu-g2 │  736 │  5714G │    0 │ TOTAL │</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="in">│         │              │  592 │  3220G │    0 │ USED  │</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="in">│         │              │  144 │  2494G │    0 │ FREE  │</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="in">├─────────┼──────────────┼──────┼────────┼──────┼───────┤</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="in">│   srlab │ cpu-g2-mem2x │   32 │   490G │    0 │ TOTAL │</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="in">│         │              │    4 │    45G │    0 │ USED  │</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in">│         │              │   28 │   445G │    0 │ FREE  │</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="in">╰─────────┴──────────────┴──────┴────────┴──────┴───────╯</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="in">              Checkpoint Resources               </span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="in">╭─────────────────┬──────────────┬──────────────╮</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">│                 │         CPUs │         GPUs │</span></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">├─────────────────┼──────────────┼──────────────┤</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in">│           Idle: │         4496 │          255 │</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">╰─────────────────┴──────────────┴──────────────╯</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">   Checkpoint is currently limited to 910 jobs</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>Based on the above information one might select</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>&lt;img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-25-22.png" width="300"/&gt;</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## Custom Container</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>One real value here is that customized Container files can you used.</span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>See repo directory for list of files.</span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>If you want to get started fast and are genomic inclined, feel free to use</span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="in">`/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif`</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>Which loads</span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>| Program Name | Version | Installation Method | Notes |</span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>|------------------|------------------|------------------|------------------|</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>| Apptainer | 1.4.0 | .deb package (dpkg) | Required for Nextflow/nf-core support |</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>| bedtools | v2.31.0 | Binary download | Installed as&nbsp;bedtools.static |</span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>| Bismark | 0.24.2 | Source (zip) | Requires Bowtie2 |</span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>| Bowtie2 | 2.5.4 | Binary (zip) | -sra-linux-x86_64&nbsp;version |</span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>| DIAMOND | 2.1.9 | Binary (tar.gz) | diamond-linux64 |</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>| fastp | 0.23.4 | Binary download | Direct binary download from opengene.org |</span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>| FastQC | 0.12.1 | Binary (zip) | Renamed to&nbsp;fastqc-${version}</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>gffcompare | 0.12.6 | Binary (tar.gz) | From StringTie site</span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>HISAT2 | 2.2.1 | Source (make) | Compiled from source</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>kallisto | 0.51.1 | Source (cmake, make) | Compiled in a&nbsp;build&nbsp;directory</span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>Miniforge (mamba) | 24.7.1-0 | Installer script (bash) | Used for Python + conda/mamba-based installs</span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>MultiQC | 1.24.1 | Installed via mamba | In&nbsp;multiqc_env&nbsp;conda environment</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>Nextflow | Latest | Script (curl) | Installed via official bootstrap method</span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>NCBI Datasets CLI | 13.34.0 | Binary (zip) | Extracted to&nbsp;ncbi-datasets-v${version}&nbsp;directory |</span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>| NCBI BLAST+ | 2.16.0 | Binary (tar.gz) | Downloaded from NCBI FTP |</span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>| RepeatMasker | 4.1.7-p1 | Source (tar.gz) | Requires local DB (famdb); symlinks set to Klone’s installation |</span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>| RMBLAST | 2.14.1 | Binary (tar.gz) | From RepeatMasker.org |</span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>| salmon | 1.10.0 | Binary (tar.gz) | Installed from GitHub release |</span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>| samtools | 1.20 | Source (configure, make) | Compiled locally |</span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>| StringTie | 2.2.1 | Binary (tar.gz) | Downloaded from StringTie website |</span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>| Trimmomatic | 0.39 | Binary (zip) | Java-based, unzipped and made executable |</span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>| TRF (Tandem Repeats Finder) | 4.09.1 | Binary (github) | Named&nbsp;trf409.linux64, marked executable |</span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="fu">## Leveraging ckpt as resource</span></span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>If you only need instance running <span class="sc">\&lt;</span> 5 hours one might say best practices would be to use <span class="in">`ckpt`</span>. <span class="in">`ckpt`</span> are unused resources by larger UW community thus not using your own group shared resources. However you will get kicked off at around 5 hours.</span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>&lt;img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-29-53.png" width="300"/&gt;</span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="fu">## Compute Parameters</span></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>You then need to select tasks, cpus, and memory</span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>&lt;img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-32-44.png" width="300"/&gt;</span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a><span class="fu"># Launch and Connect</span></span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>The instance in Launched and then you click on "Connect to RStudio Server".</span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>&lt;img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_My_Interactive_Sessions_-_Hyak_OnDemand_2025-05-01_15-35-03.png" width="500"/&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Running RStudio on Hyak using On-Demand Feature"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: left</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">    smooth-scroll: true</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    link-external-icon: true</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">    link-external-newwindow: true</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-cap-location: bottom</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-align: center</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon="info"}</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>If you're experienced with RStudio but new to Hyak, launching an instance via the OnDemand portal is easier than ever.</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>See also: <span class="co">[</span><span class="ot">Hyak OnDemand Docs</span><span class="co">](https://hyak.uw.edu/docs/ood/start)</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Accessing the Dashboard</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>Go to the OnDemand Dashboard:  </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="ot">&lt;https://ondemand.hyak.uw.edu/pun/sys/dashboard/&gt;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="al">![OnDemand Dashboard](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-05.png)</span>{width=70%}</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>Click on **Interactive Apps**:</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="al">![Interactive Apps](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-40.png)</span>{width=70%}</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Selecting Resources</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>After selecting RStudio, you’ll be prompted to specify the computing resources needed.</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="al">![Resource Selection](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-04-18.png)</span>{width=70%}</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>If you're unfamiliar with the Klone cluster, it’s helpful to explore your resource allocations:</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Click on <span class="in">`&gt;_ Klone Login`</span> from the dashboard.</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Enter your UW credentials.</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Run the <span class="in">`hyakalloc`</span> command:</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="ex">hyakalloc</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>This will display your available and used CPU/memory allocations.</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="al">![hyakalloc output](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png)</span>{width=100%}</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>Based on your allocations, select an appropriate partition and number of cores:</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="al">![Example resource request](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-25-22.png)</span>{width=70%}</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Using a Custom Container</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>A key benefit of OnDemand is the ability to launch **custom container environments**.</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>If you're working with genomics or bioinformatics, consider using:</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="in">```text</span></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="in">/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>This container includes:</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>| Program            | Version   | Install Method      | Notes                                  |</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>|--------------------|-----------|----------------------|----------------------------------------|</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>| Apptainer          | 1.4.0     | <span class="in">`.deb`</span> package       | Required for Nextflow/nf-core support  |</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>| Bismark            | 0.24.2    | Source               | Requires Bowtie2                       |</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>| Bowtie2            | 2.5.4     | Binary               |                                        |</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>| DIAMOND            | 2.1.9     | Binary               |                                        |</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>| FastQC             | 0.12.1    | Binary               | Renamed <span class="in">`fastqc-${version}`</span>           |</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>| HISAT2             | 2.2.1     | Source               | Compiled with <span class="in">`make`</span>                  |</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>| MultiQC            | 1.24.1    | <span class="in">`mamba`</span>              | In <span class="in">`multiqc_env`</span>                      |</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>| Nextflow           | Latest    | Script (<span class="in">`curl`</span>)      | Bootstrap install                      |</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>| NCBI BLAST+        | 2.16.0    | Binary               | From NCBI FTP                          |</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>| RepeatMasker       | 4.1.7-p1  | Source               | Requires local famdb setup             |</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>| salmon             | 1.10.0    | Binary               | From GitHub release                    |</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>| samtools           | 1.20      | Source               | Compiled locally                       |</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>| StringTie          | 2.2.1     | Binary               | From StringTie website                 |</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>| Trimmomatic        | 0.39      | Binary (Java-based)  | Made executable                        |</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Leveraging the `ckpt` Partition</span></span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>If your job will run for **less than 5 hours**, use the `ckpt` partition. These are unused shared UW-wide resources and won't count against your group allocation. However, jobs **may be preempted** after 5 hours.</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="al">![ckpt option](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-29-53.png)</span>{width=70%}</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Setting Compute Parameters</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>Specify the number of tasks, CPUs, and memory your session will need:</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a><span class="al">![Compute selection](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-32-44.png)</span>{width=70%}</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6. Launch and Connect</span></span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>Once launched, you’ll be taken to the **My Interactive Sessions** page.</span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>Click **"Connect to RStudio Server"** to begin using RStudio on Hyak.</span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a><span class="al">![Connect to RStudio](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_My_Interactive_Sessions_-_Hyak_OnDemand_2025-05-01_15-35-03.png)</span>{width=80%}</span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>::: {.callout-important icon="check-circle"}</span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>RStudio in Hyak's OnDemand portal offers a reproducible, containerized environment with access to powerful UW computing infrastructure — ideal for data-intensive research and teaching workflows.</span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

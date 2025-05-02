@@ -1,5 +1,5 @@
 ---
-title: "Running RStudio on Hyak using On-Demand feature"
+title: "Running RStudio on Hyak using On-Demand Feature"
 format:
   html:
     toc: true
@@ -11,126 +11,118 @@ format:
     link-external-icon: true
     link-external-newwindow: true
     number-sections: true
+    fig-cap-location: bottom
+    fig-align: center
+    code-overflow: wrap
 editor: visual
 ---
 
-**Pro at RStudio but would benefit from more resources? It is easier than ever to launch a RStudio Instance on Hyak.**
+::: {.callout-note icon="info"}
+If you're experienced with RStudio but new to Hyak, launching an instance via the OnDemand portal is easier than ever.
 
-::: callout-note
-see also: <https://hyak.uw.edu/docs/ood/start>
+See also: [Hyak OnDemand Docs](https://hyak.uw.edu/docs/ood/start)
 :::
-
-------------------------------------------------------------------------
-
-# Access Dashboard
-
-Go to <https://ondemand.hyak.uw.edu/pun/sys/dashboard/>
-
-<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-05.png" width="300"/>
-
-Click on Interactive Apps
-
-<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-40.png" width="300"/>
-
-# Selecting Resources
-
-Decide on what specific resources are available and needed.
-
-You will be then be asked for information on resources you will ask for.
-
-<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-04-18.png" width="300"/>
-
-If you this is the first experience with Klone you it might be good to get familar with what resources are available to you.
-
-For this you can login to Klone at command line from this webpage by clicking on `>_Klone Login` and entering your credentials. From there you can run command `hyakalloc` to see what resources you have access to.
-
-<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png" width="100%"/>
 
 ---
 
-```         
-Last login: Thu May  1 10:23:40 2025 from 10.64.64.9
-(base) [sr320@klone-login03 ~]$ hyakalloc
-       Account resources available to user: sr320        
-╭─────────┬──────────────┬──────┬────────┬──────┬───────╮
-│ Account │    Partition │ CPUs │ Memory │ GPUs │       │
-├─────────┼──────────────┼──────┼────────┼──────┼───────┤
-│   coenv │      compute │   40 │   175G │    0 │ TOTAL │
-│         │              │   25 │   138G │    0 │ USED  │
-│         │              │   15 │    37G │    0 │ FREE  │
-├─────────┼──────────────┼──────┼────────┼──────┼───────┤
-│   coenv │       cpu-g2 │  736 │  5714G │    0 │ TOTAL │
-│         │              │  592 │  3220G │    0 │ USED  │
-│         │              │  144 │  2494G │    0 │ FREE  │
-├─────────┼──────────────┼──────┼────────┼──────┼───────┤
-│   srlab │ cpu-g2-mem2x │   32 │   490G │    0 │ TOTAL │
-│         │              │    4 │    45G │    0 │ USED  │
-│         │              │   28 │   445G │    0 │ FREE  │
-╰─────────┴──────────────┴──────┴────────┴──────┴───────╯
-              Checkpoint Resources               
-╭─────────────────┬──────────────┬──────────────╮
-│                 │         CPUs │         GPUs │
-├─────────────────┼──────────────┼──────────────┤
-│           Idle: │         4496 │          255 │
-╰─────────────────┴──────────────┴──────────────╯
-   Checkpoint is currently limited to 910 jobs
+## 1. Accessing the Dashboard
+
+Go to the OnDemand Dashboard:  
+<https://ondemand.hyak.uw.edu/pun/sys/dashboard/>
+
+![OnDemand Dashboard](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-05.png){width=70%}
+
+Click on **Interactive Apps**:
+
+![Interactive Apps](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-40.png){width=70%}
+
+---
+
+## 2. Selecting Resources
+
+After selecting RStudio, you’ll be prompted to specify the computing resources needed.
+
+![Resource Selection](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-04-18.png){width=70%}
+
+If you're unfamiliar with the Klone cluster, it’s helpful to explore your resource allocations:
+
+1. Click on `>_ Klone Login` from the dashboard.
+2. Enter your UW credentials.
+3. Run the `hyakalloc` command:
+
+```bash
+hyakalloc
 ```
 
-Based on the above information one might select
+This will display your available and used CPU/memory allocations.
 
-<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-25-22.png" width="300"/>
+![hyakalloc output](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png){width=100%}
 
-## Custom Container
+Based on your allocations, select an appropriate partition and number of cores:
 
-One real value here is that customized Container files can you used.
+![Example resource request](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-25-22.png){width=70%}
 
-See repo directory for list of files.
+---
 
-If you want to get started fast and are genomic inclined, feel free to use
+## 3. Using a Custom Container
 
-`/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif`
+A key benefit of OnDemand is the ability to launch **custom container environments**.
 
-Which loads
+If you're working with genomics or bioinformatics, consider using:
 
-| Program Name | Version | Installation Method | Notes |
-|------------------|------------------|------------------|------------------|
-| Apptainer | 1.4.0 | .deb package (dpkg) | Required for Nextflow/nf-core support |
-| bedtools | v2.31.0 | Binary download | Installed as bedtools.static |
-| Bismark | 0.24.2 | Source (zip) | Requires Bowtie2 |
-| Bowtie2 | 2.5.4 | Binary (zip) | -sra-linux-x86_64 version |
-| DIAMOND | 2.1.9 | Binary (tar.gz) | diamond-linux64 |
-| fastp | 0.23.4 | Binary download | Direct binary download from opengene.org |
-| FastQC | 0.12.1 | Binary (zip) | Renamed to fastqc-${version}
-gffcompare | 0.12.6 | Binary (tar.gz) | From StringTie site
-HISAT2 | 2.2.1 | Source (make) | Compiled from source
-kallisto | 0.51.1 | Source (cmake, make) | Compiled in a build directory
-Miniforge (mamba) | 24.7.1-0 | Installer script (bash) | Used for Python + conda/mamba-based installs
-MultiQC | 1.24.1 | Installed via mamba | In multiqc_env conda environment
-Nextflow | Latest | Script (curl) | Installed via official bootstrap method
-NCBI Datasets CLI | 13.34.0 | Binary (zip) | Extracted to ncbi-datasets-v${version} directory |
-| NCBI BLAST+ | 2.16.0 | Binary (tar.gz) | Downloaded from NCBI FTP |
-| RepeatMasker | 4.1.7-p1 | Source (tar.gz) | Requires local DB (famdb); symlinks set to Klone’s installation |
-| RMBLAST | 2.14.1 | Binary (tar.gz) | From RepeatMasker.org |
-| salmon | 1.10.0 | Binary (tar.gz) | Installed from GitHub release |
-| samtools | 1.20 | Source (configure, make) | Compiled locally |
-| StringTie | 2.2.1 | Binary (tar.gz) | Downloaded from StringTie website |
-| Trimmomatic | 0.39 | Binary (zip) | Java-based, unzipped and made executable |
-| TRF (Tandem Repeats Finder) | 4.09.1 | Binary (github) | Named trf409.linux64, marked executable |
+```text
+/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif
+```
 
-## Leveraging ckpt as resource
+This container includes:
 
-If you only need instance running \< 5 hours one might say best practices would be to use `ckpt`. `ckpt` are unused resources by larger UW community thus not using your own group shared resources. However you will get kicked off at around 5 hours.
+| Program            | Version   | Install Method      | Notes                                  |
+|--------------------|-----------|----------------------|----------------------------------------|
+| Apptainer          | 1.4.0     | `.deb` package       | Required for Nextflow/nf-core support  |
+| Bismark            | 0.24.2    | Source               | Requires Bowtie2                       |
+| Bowtie2            | 2.5.4     | Binary               |                                        |
+| DIAMOND            | 2.1.9     | Binary               |                                        |
+| FastQC             | 0.12.1    | Binary               | Renamed `fastqc-${version}`           |
+| HISAT2             | 2.2.1     | Source               | Compiled with `make`                  |
+| MultiQC            | 1.24.1    | `mamba`              | In `multiqc_env`                      |
+| Nextflow           | Latest    | Script (`curl`)      | Bootstrap install                      |
+| NCBI BLAST+        | 2.16.0    | Binary               | From NCBI FTP                          |
+| RepeatMasker       | 4.1.7-p1  | Source               | Requires local famdb setup             |
+| salmon             | 1.10.0    | Binary               | From GitHub release                    |
+| samtools           | 1.20      | Source               | Compiled locally                       |
+| StringTie          | 2.2.1     | Binary               | From StringTie website                 |
+| Trimmomatic        | 0.39      | Binary (Java-based)  | Made executable                        |
 
-<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-29-53.png" width="300"/>
+---
 
-## Compute Parameters
+## 4. Leveraging the `ckpt` Partition
 
-You then need to select tasks, cpus, and memory
+::: {.callout-tip}
+If your job will run for **less than 5 hours**, use the `ckpt` partition. These are unused shared UW-wide resources and won't count against your group allocation. However, jobs **may be preempted** after 5 hours.
+:::
 
-<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-32-44.png" width="300"/>
+![ckpt option](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-29-53.png){width=70%}
 
-# Launch and Connect
+---
 
-The instance is Launched and then you click on "Connect to RStudio Server".
+## 5. Setting Compute Parameters
 
-<img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_My_Interactive_Sessions_-_Hyak_OnDemand_2025-05-01_15-35-03.png" width="500"/>
+Specify the number of tasks, CPUs, and memory your session will need:
+
+![Compute selection](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-32-44.png){width=70%}
+
+---
+
+## 6. Launch and Connect
+
+Once launched, you’ll be taken to the **My Interactive Sessions** page.
+
+Click **"Connect to RStudio Server"** to begin using RStudio on Hyak.
+
+![Connect to RStudio](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_My_Interactive_Sessions_-_Hyak_OnDemand_2025-05-01_15-35-03.png){width=80%}
+
+---
+
+::: {.callout-important icon="check-circle"}
+RStudio in Hyak's OnDemand portal offers a reproducible, containerized environment with access to powerful UW computing infrastructure — ideal for data-intensive research and teaching workflows.
+:::

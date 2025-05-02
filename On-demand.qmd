@@ -14,7 +14,7 @@ format:
 editor: visual
 ---
 
-**Pro at RStudio but would benefit from more resources? It is easier than ever to launch at RStudio Instance on Hyak.**
+**Pro at RStudio but would benefit from more resources? It is easier than ever to launch a RStudio Instance on Hyak.**
 
 ::: callout-note
 see also: <https://hyak.uw.edu/docs/ood/start>

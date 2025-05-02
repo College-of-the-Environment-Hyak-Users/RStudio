@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>on-demand – RStudio</title>
+<title>About – RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -122,7 +93,7 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link active" href="./about.html" aria-current="page"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -136,220 +107,34 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#running-rstudio-on-hyak-using-on-demand-feature" id="toc-running-rstudio-on-hyak-using-on-demand-feature" class="nav-link active" data-scroll-target="#running-rstudio-on-hyak-using-on-demand-feature">Running RStudio on Hyak using On-Demand feature</a>
-  <ul class="collapse">
-  <li><a href="#access-dashboard" id="toc-access-dashboard" class="nav-link" data-scroll-target="#access-dashboard">Access Dashboard</a></li>
-  <li><a href="#selecting-resources" id="toc-selecting-resources" class="nav-link" data-scroll-target="#selecting-resources">Selecting Resources</a>
-  <ul class="collapse">
-  <li><a href="#custom-container" id="toc-custom-container" class="nav-link" data-scroll-target="#custom-container">Custom Container</a></li>
-  <li><a href="#leveraging-ckpt-as-resource" id="toc-leveraging-ckpt-as-resource" class="nav-link" data-scroll-target="#leveraging-ckpt-as-resource">Leveraging ckpt as resource</a></li>
-  <li><a href="#compute-parameters" id="toc-compute-parameters" class="nav-link" data-scroll-target="#compute-parameters">Compute Parameters</a></li>
-  </ul></li>
-  <li><a href="#launch-and-connect" id="toc-launch-and-connect" class="nav-link" data-scroll-target="#launch-and-connect">Launch and Connect</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">About</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="running-rstudio-on-hyak-using-on-demand-feature" class="level1">
-<h1>Running RStudio on Hyak using On-Demand feature</h1>
-<p>see also: <a href="https://hyak.uw.edu/docs/ood/start" class="uri">https://hyak.uw.edu/docs/ood/start</a></p>
-<hr>
-<p><strong>Pro at RStudio but would benefit from more resources? It is easier than ever to launch at RStudio Instance on Hyak.</strong></p>
-<section id="access-dashboard" class="level2">
-<h2 class="anchored" data-anchor-id="access-dashboard">Access Dashboard</h2>
-<p>Go to <a href="https://ondemand.hyak.uw.edu/pun/sys/dashboard/" class="uri">https://ondemand.hyak.uw.edu/pun/sys/dashboard/</a></p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-05.png" width="300"></p>
-<p>Click on Interactive Apps</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_Dashboard_-_Hyak_OnDemand_2025-05-01_11-59-40.png" width="300"></p>
-</section>
-<section id="selecting-resources" class="level2">
-<h2 class="anchored" data-anchor-id="selecting-resources">Selecting Resources</h2>
-<p>Decide on what specific resources are available and needed.</p>
-<p>You will be then be asked for information on resources you will ask for.</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-04-18.png" width="300"></p>
-<p>If you this is the first experience with Klone you it might be good to get familar with what resources are available to you.</p>
-<p>For this you can login to Klone at command line from this webpage by clicking on <code>&gt;_Klone Login</code> and entering your credentials. From there you can run command <code>hyakalloc</code> to see what resources you have access to.</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-07-21.png" width="600"></p>
-<pre><code>Last login: Thu May  1 10:23:40 2025 from 10.64.64.9
-(base) [sr320@klone-login03 ~]$ hyakalloc
-       Account resources available to user: sr320        
-╭─────────┬──────────────┬──────┬────────┬──────┬───────╮
-│ Account │    Partition │ CPUs │ Memory │ GPUs │       │
-├─────────┼──────────────┼──────┼────────┼──────┼───────┤
-│   coenv │      compute │   40 │   175G │    0 │ TOTAL │
-│         │              │   25 │   138G │    0 │ USED  │
-│         │              │   15 │    37G │    0 │ FREE  │
-├─────────┼──────────────┼──────┼────────┼──────┼───────┤
-│   coenv │       cpu-g2 │  736 │  5714G │    0 │ TOTAL │
-│         │              │  592 │  3220G │    0 │ USED  │
-│         │              │  144 │  2494G │    0 │ FREE  │
-├─────────┼──────────────┼──────┼────────┼──────┼───────┤
-│   srlab │ cpu-g2-mem2x │   32 │   490G │    0 │ TOTAL │
-│         │              │    4 │    45G │    0 │ USED  │
-│         │              │   28 │   445G │    0 │ FREE  │
-╰─────────┴──────────────┴──────┴────────┴──────┴───────╯
-              Checkpoint Resources               
-╭─────────────────┬──────────────┬──────────────╮
-│                 │         CPUs │         GPUs │
-├─────────────────┼──────────────┼──────────────┤
-│           Idle: │         4496 │          255 │
-╰─────────────────┴──────────────┴──────────────╯
-   Checkpoint is currently limited to 910 jobs</code></pre>
-<p>Based on the above information one might select</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_12-25-22.png" width="300"></p>
-<section id="custom-container" class="level3">
-<h3 class="anchored" data-anchor-id="custom-container">Custom Container</h3>
-<p>One real value here is that customized Container files can you used.</p>
-<p>See repo directory for list of files.</p>
-<p>If you want to get started fast and are genomic inclined, feel free to use</p>
-<p><code>/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif</code></p>
-<p>Which loads</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Program Name</th>
-<th>Version</th>
-<th>Installation Method</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Apptainer</td>
-<td>1.4.0</td>
-<td>.deb package (dpkg)</td>
-<td>Required for Nextflow/nf-core support</td>
-</tr>
-<tr class="even">
-<td>bedtools</td>
-<td>v2.31.0</td>
-<td>Binary download</td>
-<td>Installed as&nbsp;bedtools.static</td>
-</tr>
-<tr class="odd">
-<td>Bismark</td>
-<td>0.24.2</td>
-<td>Source (zip)</td>
-<td>Requires Bowtie2</td>
-</tr>
-<tr class="even">
-<td>Bowtie2</td>
-<td>2.5.4</td>
-<td>Binary (zip)</td>
-<td>-sra-linux-x86_64&nbsp;version</td>
-</tr>
-<tr class="odd">
-<td>DIAMOND</td>
-<td>2.1.9</td>
-<td>Binary (tar.gz)</td>
-<td>diamond-linux64</td>
-</tr>
-<tr class="even">
-<td>fastp</td>
-<td>0.23.4</td>
-<td>Binary download</td>
-<td>Direct binary download from opengene.org</td>
-</tr>
-<tr class="odd">
-<td>FastQC</td>
-<td>0.12.1</td>
-<td>Binary (zip)</td>
-<td>Renamed to&nbsp;fastqc-<span class="math inline">\({version}
-gffcompare | 0.12.6 | Binary (tar.gz) | From StringTie site
-HISAT2 | 2.2.1 | Source (make) | Compiled from source
-kallisto | 0.51.1 | Source (cmake, make) | Compiled in a&nbsp;build&nbsp;directory
-Miniforge (mamba) | 24.7.1-0 | Installer script (bash) | Used for Python + conda/mamba-based installs
-MultiQC | 1.24.1 | Installed via mamba | In&nbsp;multiqc_env&nbsp;conda environment
-Nextflow | Latest | Script (curl) | Installed via official bootstrap method
-NCBI Datasets CLI | 13.34.0 | Binary (zip) | Extracted to&nbsp;ncbi-datasets-v\)</span>{version}&nbsp;directory</td>
-</tr>
-<tr class="even">
-<td>NCBI BLAST+</td>
-<td>2.16.0</td>
-<td>Binary (tar.gz)</td>
-<td>Downloaded from NCBI FTP</td>
-</tr>
-<tr class="odd">
-<td>RepeatMasker</td>
-<td>4.1.7-p1</td>
-<td>Source (tar.gz)</td>
-<td>Requires local DB (famdb); symlinks set to Klone’s installation</td>
-</tr>
-<tr class="even">
-<td>RMBLAST</td>
-<td>2.14.1</td>
-<td>Binary (tar.gz)</td>
-<td>From RepeatMasker.org</td>
-</tr>
-<tr class="odd">
-<td>salmon</td>
-<td>1.10.0</td>
-<td>Binary (tar.gz)</td>
-<td>Installed from GitHub release</td>
-</tr>
-<tr class="even">
-<td>samtools</td>
-<td>1.20</td>
-<td>Source (configure, make)</td>
-<td>Compiled locally</td>
-</tr>
-<tr class="odd">
-<td>StringTie</td>
-<td>2.2.1</td>
-<td>Binary (tar.gz)</td>
-<td>Downloaded from StringTie website</td>
-</tr>
-<tr class="even">
-<td>Trimmomatic</td>
-<td>0.39</td>
-<td>Binary (zip)</td>
-<td>Java-based, unzipped and made executable</td>
-</tr>
-<tr class="odd">
-<td>TRF (Tandem Repeats Finder)</td>
-<td>4.09.1</td>
-<td>Binary (github)</td>
-<td>Named&nbsp;trf409.linux64, marked executable</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="leveraging-ckpt-as-resource" class="level3">
-<h3 class="anchored" data-anchor-id="leveraging-ckpt-as-resource">Leveraging ckpt as resource</h3>
-<p>If you only need instance running &lt; 5 hours one might say best practices would be to use <code>ckpt</code>. <code>ckpt</code> are unused resources by larger UW community thus not using your own group shared resources. However you will get kicked off at around 5 hours.</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-29-53.png" width="300"></p>
-</section>
-<section id="compute-parameters" class="level3">
-<h3 class="anchored" data-anchor-id="compute-parameters">Compute Parameters</h3>
-<p>You then need to select tasks, cpus, and memory</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_RStudio_-_Hyak_OnDemand_2025-05-01_15-32-44.png" width="300"></p>
-</section>
-</section>
-<section id="launch-and-connect" class="level2">
-<h2 class="anchored" data-anchor-id="launch-and-connect">Launch and Connect</h2>
-<p>The instance in Launched and then you click on “Connect to RStudio Server”.</p>
-<p><img src="http://gannet.fish.washington.edu/seashell/snaps/Monosnap_My_Interactive_Sessions_-_Hyak_OnDemand_2025-05-01_15-35-03.png" width="500"></p>
+    
+  
+    
+  </div>
+  
 
 
-</section>
-</section>
+</header>
+
+
+<p>About this site</p>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

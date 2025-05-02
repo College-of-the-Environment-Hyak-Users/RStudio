@@ -3,20 +3,44 @@ project:
   output-dir: docs
 
 website:
-  title: "RStudio"
+  title: "RStudio on Hyak"
+  site-url: https://github.com/College-of-the-Environment-Hyak-Users
+  favicon: images/favicon.png  # optional
+  page-navigation: true
+  search: true
+
   navbar:
+    background: primary
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Home"
+        file: index.qmd
+      - text: "Tips & Tricks"
+        file: tips.qmd
+      - text: "FAQs"
+        file: faq.qmd
+    right:
+      - icon: github
+        href: https://github.com/College-of-the-Environment-Hyak-Users/rstudio
+        aria-label: GitHub
+
+  # sidebar:
+  #   style: "docked"
+  #   collapse-level: 1
+  #   contents:
+  #     - index.qmd
+  #     - tips.qmd
+  #     - faq.qmd
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
+    theme: cosmo
     toc: true
+    toc-depth: 2
+    smooth-scroll: true
+    code-copy: true
+    code-overflow: wrap
+    fig-align: center
+    link-external-newwindow: true
 
 
 

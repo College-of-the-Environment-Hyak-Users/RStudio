@@ -30,34 +30,27 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "RStudio on Hyak",
-    "section": "",
-    "text": "Step by Step Guide\n[Container files]"
-  },
-  {
-    "objectID": "On-demand.html",
-    "href": "On-demand.html",
     "title": "Running RStudio on Hyak using On-Demand feature",
     "section": "",
     "text": "Pro at RStudio but would benefit from more resources? It is easier than ever to launch a RStudio Instance on Hyak."
   },
   {
-    "objectID": "On-demand.html#custom-container",
-    "href": "On-demand.html#custom-container",
+    "objectID": "index.html#custom-container",
+    "href": "index.html#custom-container",
     "title": "Running RStudio on Hyak using On-Demand feature",
     "section": "2.1 Custom Container",
     "text": "2.1 Custom Container\nOne real value here is that customized Container files can you used.\nSee repo directory for list of files.\nIf you want to get started fast and are genomic inclined, feel free to use\n/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif\nWhich loads\n\n\n\n\n\n\n\n\n\nProgram Name\nVersion\nInstallation Method\nNotes\n\n\n\n\nApptainer\n1.4.0\n.deb package (dpkg)\nRequired for Nextflow/nf-core support\n\n\nbedtools\nv2.31.0\nBinary download\nInstalled as bedtools.static\n\n\nBismark\n0.24.2\nSource (zip)\nRequires Bowtie2\n\n\nBowtie2\n2.5.4\nBinary (zip)\n-sra-linux-x86_64 version\n\n\nDIAMOND\n2.1.9\nBinary (tar.gz)\ndiamond-linux64\n\n\nfastp\n0.23.4\nBinary download\nDirect binary download from opengene.org\n\n\nFastQC\n0.12.1\nBinary (zip)\nRenamed to fastqc-\\({version}\ngffcompare | 0.12.6 | Binary (tar.gz) | From StringTie site\nHISAT2 | 2.2.1 | Source (make) | Compiled from source\nkallisto | 0.51.1 | Source (cmake, make) | Compiled in a build directory\nMiniforge (mamba) | 24.7.1-0 | Installer script (bash) | Used for Python + conda/mamba-based installs\nMultiQC | 1.24.1 | Installed via mamba | In multiqc_env conda environment\nNextflow | Latest | Script (curl) | Installed via official bootstrap method\nNCBI Datasets CLI | 13.34.0 | Binary (zip) | Extracted to ncbi-datasets-v\\){version} directory\n\n\nNCBI BLAST+\n2.16.0\nBinary (tar.gz)\nDownloaded from NCBI FTP\n\n\nRepeatMasker\n4.1.7-p1\nSource (tar.gz)\nRequires local DB (famdb); symlinks set to Klone’s installation\n\n\nRMBLAST\n2.14.1\nBinary (tar.gz)\nFrom RepeatMasker.org\n\n\nsalmon\n1.10.0\nBinary (tar.gz)\nInstalled from GitHub release\n\n\nsamtools\n1.20\nSource (configure, make)\nCompiled locally\n\n\nStringTie\n2.2.1\nBinary (tar.gz)\nDownloaded from StringTie website\n\n\nTrimmomatic\n0.39\nBinary (zip)\nJava-based, unzipped and made executable\n\n\nTRF (Tandem Repeats Finder)\n4.09.1\nBinary (github)\nNamed trf409.linux64, marked executable"
   },
   {
-    "objectID": "On-demand.html#leveraging-ckpt-as-resource",
-    "href": "On-demand.html#leveraging-ckpt-as-resource",
+    "objectID": "index.html#leveraging-ckpt-as-resource",
+    "href": "index.html#leveraging-ckpt-as-resource",
     "title": "Running RStudio on Hyak using On-Demand feature",
     "section": "2.2 Leveraging ckpt as resource",
     "text": "2.2 Leveraging ckpt as resource\nIf you only need instance running &lt; 5 hours one might say best practices would be to use ckpt. ckpt are unused resources by larger UW community thus not using your own group shared resources. However you will get kicked off at around 5 hours."
   },
   {
-    "objectID": "On-demand.html#compute-parameters",
-    "href": "On-demand.html#compute-parameters",
+    "objectID": "index.html#compute-parameters",
+    "href": "index.html#compute-parameters",
     "title": "Running RStudio on Hyak using On-Demand feature",
     "section": "2.3 Compute Parameters",
     "text": "2.3 Compute Parameters\nYou then need to select tasks, cpus, and memory"

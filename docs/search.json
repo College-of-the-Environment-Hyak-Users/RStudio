@@ -38,43 +38,22 @@
     "objectID": "index.html#accessing-the-dashboard",
     "href": "index.html#accessing-the-dashboard",
     "title": "Running RStudio on Hyak using On-Demand Feature",
-    "section": "1 1. Accessing the Dashboard",
-    "text": "1 1. Accessing the Dashboard\nGo to the OnDemand Dashboard:\nhttps://ondemand.hyak.uw.edu/pun/sys/dashboard/\n\n\n\nOnDemand Dashboard\n\n\nClick on Interactive Apps:\n\n\n\nInteractive Apps"
+    "section": "1 Accessing the Dashboard",
+    "text": "1 Accessing the Dashboard\nGo to the OnDemand Dashboard:\nhttps://ondemand.hyak.uw.edu/pun/sys/dashboard/\n\n\n\nOnDemand Dashboard\n\n\nClick on Interactive Apps:\n\n\n\nInteractive Apps"
   },
   {
     "objectID": "index.html#selecting-resources",
     "href": "index.html#selecting-resources",
     "title": "Running RStudio on Hyak using On-Demand Feature",
-    "section": "2 2. Selecting Resources",
-    "text": "2 2. Selecting Resources\nAfter selecting RStudio, you’ll be prompted to specify the computing resources needed.\n\n\n\nResource Selection\n\n\nIf you’re unfamiliar with the Klone cluster, it’s helpful to explore your resource allocations:\n\nClick on &gt;_ Klone Login from the dashboard.\nEnter your UW credentials.\nRun the hyakalloc command:\n\nhyakalloc\nThis will display your available and used CPU/memory allocations.\n\n\n\nhyakalloc output\n\n\nBased on your allocations, select an appropriate partition and number of cores:\n\n\n\nExample resource request"
-  },
-  {
-    "objectID": "index.html#using-a-custom-container",
-    "href": "index.html#using-a-custom-container",
-    "title": "Running RStudio on Hyak using On-Demand Feature",
-    "section": "3 3. Using a Custom Container",
-    "text": "3 3. Using a Custom Container\nA key benefit of OnDemand is the ability to launch custom container environments.\nIf you’re working with genomics or bioinformatics, consider using:\n/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif\nThis container includes:\n\n\n\n\n\n\n\n\n\nProgram\nVersion\nInstall Method\nNotes\n\n\n\n\nApptainer\n1.4.0\n.deb package\nRequired for Nextflow/nf-core support\n\n\nBismark\n0.24.2\nSource\nRequires Bowtie2\n\n\nBowtie2\n2.5.4\nBinary\n\n\n\nDIAMOND\n2.1.9\nBinary\n\n\n\nFastQC\n0.12.1\nBinary\nRenamed fastqc-${version}\n\n\nHISAT2\n2.2.1\nSource\nCompiled with make\n\n\nMultiQC\n1.24.1\nmamba\nIn multiqc_env\n\n\nNextflow\nLatest\nScript (curl)\nBootstrap install\n\n\nNCBI BLAST+\n2.16.0\nBinary\nFrom NCBI FTP\n\n\nRepeatMasker\n4.1.7-p1\nSource\nRequires local famdb setup\n\n\nsalmon\n1.10.0\nBinary\nFrom GitHub release\n\n\nsamtools\n1.20\nSource\nCompiled locally\n\n\nStringTie\n2.2.1\nBinary\nFrom StringTie website\n\n\nTrimmomatic\n0.39\nBinary (Java-based)\nMade executable"
-  },
-  {
-    "objectID": "index.html#leveraging-the-ckpt-partition",
-    "href": "index.html#leveraging-the-ckpt-partition",
-    "title": "Running RStudio on Hyak using On-Demand Feature",
-    "section": "4 4. Leveraging the ckpt Partition",
-    "text": "4 4. Leveraging the ckpt Partition\n\n\n\n\n\n\nTip\n\n\n\nIf your job will run for less than 5 hours, use the ckpt partition. These are unused shared UW-wide resources and won’t count against your group allocation. However, jobs may be preempted after 5 hours.\n\n\n\n\n\nckpt option"
-  },
-  {
-    "objectID": "index.html#setting-compute-parameters",
-    "href": "index.html#setting-compute-parameters",
-    "title": "Running RStudio on Hyak using On-Demand Feature",
-    "section": "5 5. Setting Compute Parameters",
-    "text": "5 5. Setting Compute Parameters\nSpecify the number of tasks, CPUs, and memory your session will need:\n\n\n\nCompute selection"
+    "section": "2 Selecting Resources",
+    "text": "2 Selecting Resources\nAfter selecting RStudio, you’ll be prompted to specify the computing resources needed.\n\n\n\nResource Selection\n\n\nIf you’re unfamiliar with the Klone cluster, it’s helpful to explore your resource allocations:\n\nClick on &gt;_ Klone Login from the dashboard.\nEnter your UW credentials.\nRun the hyakalloc command:\n\nhyakalloc\nThis will display your available and used CPU/memory allocations.\n\n\n\nhyakalloc output\n\n\nBased on your allocations, select an appropriate partition and number of cores:\n\n\n\nExample resource request\n\n\n\n\n2.1 Using a Custom Container\nA key benefit of OnDemand is the ability to launch custom container environments.\nIf you’re working with genomics or bioinformatics, consider using:\n/gscratch/srlab/containers/srlab-R4.4-bioinformatics-container-a83e518.sif\nThis container includes:\n\n\n\n\n\n\n\n\n\nProgram\nVersion\nInstall Method\nNotes\n\n\n\n\nApptainer\n1.4.0\n.deb package\nRequired for Nextflow/nf-core support\n\n\nBismark\n0.24.2\nSource\nRequires Bowtie2\n\n\nBowtie2\n2.5.4\nBinary\n\n\n\nDIAMOND\n2.1.9\nBinary\n\n\n\nFastQC\n0.12.1\nBinary\nRenamed fastqc-${version}\n\n\nHISAT2\n2.2.1\nSource\nCompiled with make\n\n\nMultiQC\n1.24.1\nmamba\nIn multiqc_env\n\n\nNextflow\nLatest\nScript (curl)\nBootstrap install\n\n\nNCBI BLAST+\n2.16.0\nBinary\nFrom NCBI FTP\n\n\nRepeatMasker\n4.1.7-p1\nSource\nRequires local famdb setup\n\n\nsalmon\n1.10.0\nBinary\nFrom GitHub release\n\n\nsamtools\n1.20\nSource\nCompiled locally\n\n\nStringTie\n2.2.1\nBinary\nFrom StringTie website\n\n\nTrimmomatic\n0.39\nBinary (Java-based)\nMade executable\n\n\n\n\n\n\n2.2 Leveraging the ckpt Partition\n\n\n\n\n\n\nTip\n\n\n\nIf your job will run for less than 5 hours, use the ckpt partition. These are unused shared UW-wide resources and won’t count against your group allocation. However, jobs may be preempted after 5 hours.\n\n\n\n\n\nckpt option\n\n\n\n\n\n2.3 Setting Compute Parameters\nSpecify the number of tasks, CPUs, and memory your session will need:\n\n\n\nCompute selection"
   },
   {
     "objectID": "index.html#launch-and-connect",
     "href": "index.html#launch-and-connect",
     "title": "Running RStudio on Hyak using On-Demand Feature",
-    "section": "6 6. Launch and Connect",
-    "text": "6 6. Launch and Connect\nOnce launched, you’ll be taken to the My Interactive Sessions page.\nClick “Connect to RStudio Server” to begin using RStudio on Hyak.\n\n\n\nConnect to RStudio\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nRStudio in Hyak’s OnDemand portal offers a reproducible, containerized environment with access to powerful UW computing infrastructure — ideal for data-intensive research and teaching workflows."
+    "section": "3 Launch and Connect",
+    "text": "3 Launch and Connect\nOnce launched, you’ll be taken to the My Interactive Sessions page.\nClick “Connect to RStudio Server” to begin using RStudio on Hyak.\n\n\n\nConnect to RStudio"
   },
   {
     "objectID": "about.html",

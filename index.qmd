@@ -25,7 +25,7 @@ See also: [Hyak OnDemand Docs](https://hyak.uw.edu/docs/ood/start)
 
 ---
 
-## 1. Accessing the Dashboard
+## Accessing the Dashboard
 
 Go to the OnDemand Dashboard:  
 <https://ondemand.hyak.uw.edu/pun/sys/dashboard/>
@@ -38,7 +38,7 @@ Click on **Interactive Apps**:
 
 ---
 
-## 2. Selecting Resources
+## Selecting Resources
 
 After selecting RStudio, you’ll be prompted to specify the computing resources needed.
 
@@ -64,7 +64,7 @@ Based on your allocations, select an appropriate partition and number of cores:
 
 ---
 
-## 3. Using a Custom Container
+### Using a Custom Container
 
 A key benefit of OnDemand is the ability to launch **custom container environments**.
 
@@ -95,7 +95,7 @@ This container includes:
 
 ---
 
-## 4. Leveraging the `ckpt` Partition
+### Leveraging the `ckpt` Partition
 
 ::: {.callout-tip}
 If your job will run for **less than 5 hours**, use the `ckpt` partition. These are unused shared UW-wide resources and won't count against your group allocation. However, jobs **may be preempted** after 5 hours.
@@ -105,7 +105,7 @@ If your job will run for **less than 5 hours**, use the `ckpt` partition. These 
 
 ---
 
-## 5. Setting Compute Parameters
+### Setting Compute Parameters
 
 Specify the number of tasks, CPUs, and memory your session will need:
 
@@ -113,7 +113,7 @@ Specify the number of tasks, CPUs, and memory your session will need:
 
 ---
 
-## 6. Launch and Connect
+## Launch and Connect
 
 Once launched, you’ll be taken to the **My Interactive Sessions** page.
 
@@ -123,6 +123,3 @@ Click **"Connect to RStudio Server"** to begin using RStudio on Hyak.
 
 ---
 
-::: {.callout-important icon="check-circle"}
-RStudio in Hyak's OnDemand portal offers a reproducible, containerized environment with access to powerful UW computing infrastructure — ideal for data-intensive research and teaching workflows.
-:::
